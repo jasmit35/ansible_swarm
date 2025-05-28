@@ -1,0 +1,10 @@
+[managers]
+manager-1 ansible_host=localhost ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/Users/jeff/.ssh/manager-1
+manager-2 ansible_host=localhost ansible_port=2200 ansible_user=vagrant ansible_ssh_private_key_file=/Users/jeff/devl/ansible_swarm/.vagrant/machines/manager-2/virtualbox/private_key
+manager-3 ansible_host=localhost ansible_port=2201 ansible_user=vagrant ansible_ssh_private_key_file=/Users/jeff/devl/ansible_swarm/.vagrant/machines/manager-3/virtualbox/private_key
+
+[workers]
+worker-4 ansible_host=localhost ansible_port=2202 ansible_user=vagrant ansible_ssh_private_key_file=/Users/jeff/devl/ansible_swarm/.vagrant/machines/worker-4/virtualbox/private_key
+worker-5 ansible_host=localhost ansible_port=2203 ansible_user=vagrant ansible_ssh_private_key_file=/Users/jeff/devl/ansible_swarm/.vagrant/machines/worker-5/virtualbox/private_key
+worker-6 ansible_host=localhost ansible_port=2204 ansible_user=vagrant ansible_ssh_private_key_file=/Users/jeff/devl/ansible_swarm/.vagrant/machines/worker-6/virtualbox/private_key
+

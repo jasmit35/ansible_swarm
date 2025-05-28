@@ -1,0 +1,10 @@
+[test_swarm]
+vagrant1 ansible_port=2222
+vagrant2 ansible_port=2200
+vagrant3 ansible_port=2201
+
+[test_swarm:vars]
+ansible_host=127.0.0.1
+ansible_user=vagrant
+
+

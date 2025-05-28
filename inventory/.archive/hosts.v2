@@ -1,0 +1,10 @@
+all:
+  children:
+    managers:
+      hosts:
+        vagrant1 ansible_port=2222
+    workers:
+      hosts:
+        vagrant2 ansible_port=2200
+        vagrant3 ansible_port=2201
+
