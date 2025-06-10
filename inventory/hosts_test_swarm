@@ -1,5 +1,3 @@
-docker_swarms:
-  children:
 
     test_swarm:
       vars:
@@ -7,7 +5,7 @@ docker_swarms:
         ansible_host: localhost 
     
       children:
-        test_managers:
+        managers:
           hosts:
             manager-1:
               ansible_port: 2222 
@@ -19,7 +17,7 @@ docker_swarms:
               ansible_port: 2201 
               ansible_ssh_private_key_file: /Users/jeff/devl/ansible_swarm/.vagrant/machines/manager-3/virtualbox/private_key
         
-        test_workers:
+        workers:
           hosts:
             worker-4:
               ansible_port: 2202 
@@ -31,27 +29,3 @@ docker_swarms:
               ansible_port: 2204 
               ansible_ssh_private_key_file: /Users/jeff/devl/ansible_swarm/.vagrant/machines/worker-6/virtualbox/private_key
     
-    prod_swarm:
-      vars:
-        ansible_port: 22
-        ansible_user: jeff 
-    
-      children:
-        managers:
-          hosts:
-            prod-man-1:
-              ansible_host: babyblue01
-              ansible_ssh_private_key_file: /Users/jeff/.ssh/id_rsa
-            prod-man-2:
-              ansible_host: babyblue02
-              ansible_ssh_private_key_file: /Users/jeff/.ssh/id_rsa
-            prod-man-3:
-              ansible_host: babyblue03
-              ansible_ssh_private_key_file: /Users/jeff/.ssh/id_rsa
-    
-        workers:
-          hosts:
-            prod-work-1:
-              ansible_host: babyblue04 
-              ansible_ssh_private_key_file: /Users/jeff/.ssh/id_rsa
-

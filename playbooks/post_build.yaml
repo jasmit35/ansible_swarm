@@ -1,0 +1,15 @@
+---
+
+- name: Perform task to complete the swarm setup AFTER it is built
+  become: true
+  gather_facts: false
+  hosts: all
+
+  tasks:
+    - name: Verify the python docker package
+      ansible.builtin.apt:
+        update_cache: true
+        name: python3-docker
+        state: present
+        install_recommends: false
+...
