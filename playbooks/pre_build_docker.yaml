@@ -1,0 +1,17 @@
+---
+- name: Perform necessary task BEFORE the cluster is built
+  become: true
+  gather_facts: true
+  hosts: all
+
+  tasks:
+
+    - name: Install docker
+      ansible.builtin.apt:
+        name:
+          - docker.io
+        update_cache: true
+        state: present
+        install_recommends: true
+
+...

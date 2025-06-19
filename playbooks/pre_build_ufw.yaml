@@ -1,0 +1,25 @@
+---
+
+- name: Perform necessary task BEFORE the cluster is built
+  become: true
+  gather_facts: true
+  hosts: all
+
+  tasks:
+    - name: Open firewall ports
+      community.general.ufw:
+        state: enabled
+        rule: allow
+        port: 22
+        proto: tcp
+        from_ip: '{{ item }}'
+      loop:
+        - 192.168.0.0/24 
+
+    - name: Install docker
+      ansible.builtin.apt:
+        update_cache: true
+        name: docker.io
+        state: present
+        install_recommends: true
+...

@@ -1,4 +1,5 @@
 ---
+
 - name: Import
   ansible.builtin.import_playbook: std_ids_groups.yaml
 
@@ -8,6 +9,13 @@
   hosts: all
 
   tasks:
+
+    - name: Verify the python docker package
+      ansible.builtin.apt:
+        update_cache: true
+        name: python3-docker
+        state: present
+        install_recommends: false
 
     - name: Ensure jeff in docker and sudo groups
       ansible.builtin.user:
@@ -35,11 +43,10 @@
         - cron
         - git
         - make
-        - python3-docker
 
     - name: Update and upgrade existing packages
       ansible.builtin.apt:
-        update_cache: false
+        update_cache: true
         upgrade: dist
 
 ...

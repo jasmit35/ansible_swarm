@@ -1,0 +1,42 @@
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  #  Grab a box that works with Apple Silicon
+  config.vm.box = "hashicorp-education/ubuntu-24-04"
+  config.vm.box_version = "0.1.0"
+
+  #  Tweek virtual box settings for our needs 
+  config.vm.provider "virtualbox" do |vb|
+    # Display the VirtualBox GUI when booting the machine
+    vb.gui = false 
+
+    # Customize the amount of memory on the VM:
+    vb.memory = "1024"
+  end
+
+  #  Configure SSH on the VMs 
+  config.ssh.insert_key = true 
+  config.ssh.keys_only = true 
+  config.ssh.forward_agent = true 
+
+  #  Share a folder on the host with all the VMs 
+  config.vm.synced_folder "./share", "/home/vagrant/share"
+
+  #  Define things unique to each VM
+  config.vm.define "vagrant1" do |vagrant1|
+    vagrant1.vm.hostname = "vagrant1"
+    vagrant1.vm.network "private_network", ip: "192.168.33.10"
+  end
+
+  config.vm.define "vagrant2" do |vagrant2|
+    vagrant2.vm.hostname = "vagrant2"
+    vagrant2.vm.network "private_network", ip: "192.168.33.11"
+  end
+
+  config.vm.define "vagrant3" do |vagrant3|
+    vagrant3.vm.hostname = "vagrant3"
+    vagrant3.vm.network "private_network", ip: "192.168.33.12"
+  end
+
+end
